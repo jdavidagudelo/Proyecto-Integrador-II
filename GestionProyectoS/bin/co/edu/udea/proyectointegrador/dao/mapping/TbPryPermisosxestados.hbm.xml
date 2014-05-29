@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 10, 2013 10:28:14 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="co.edu.udea.proyectointegrador.dto.TbPryPermisosxestados" table="TB_PRY_PERMISOSXESTADOS" catalog="proyectos">
+        <id name="nbIdn" type="java.lang.Integer">
+            <column name="NB_IDN" />
+            <generator class="identity" />
+        </id>
+        <property name="vrAdtusuario" type="string">
+            <column name="VR_ADTUSUARIO" length="32" not-null="true" />
+        </property>
+        <property name="dtAdtfecha" type="timestamp">
+            <column name="DT_ADTFECHA" length="19" not-null="true" />
+        </property>
+        <many-to-one name="tbPryEstados" class="co.edu.udea.proyectointegrador.dto.TbPryEstados" fetch="select" lazy ="false">
+            <column name="FK_ESTADOS_IDN" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tbAdmPermisos" class="co.edu.udea.proyectointegrador.dto.TbAdmPermisos" fetch="select" lazy ="false">
+            <column name="FK_PERMISOS_IDN" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

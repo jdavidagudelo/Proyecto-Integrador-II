@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 9, 2013 7:13:30 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="co.edu.udea.proyectointegrador.dto.TbPryEntregables" table="TB_PRY_ENTREGABLES" catalog="proyectos">
+        <id name="nbIdn" type="java.lang.Integer">
+            <column name="NB_IDN" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tbPryActividades" class="co.edu.udea.proyectointegrador.dto.TbPryActividades" fetch="select" lazy="false">
+            <column name="FK_ENTREGABLES_ACTIVIDADES_IDN" not-null="true" />
+        </many-to-one>
+        <property name="vrComentarioparticipante" type="string">
+            <column name="VR_COMENTARIOPARTICIPANTE" length="512" not-null="true" />
+        </property>  
+        <property name="vrNombre" type="string">
+            <column name="VR_NOMBRE" length="512" not-null="true" />
+        </property>  
+        <property name="blobAdjunto" type="binary">
+            <column name="BLOB_ADJUNTO" not-null="true" />
+        </property>
+        <property name="vrAdtusuario" type="string">
+            <column name="VR_ADTUSUARIO" length="32" not-null="true" />
+        </property>
+        <property name="dtAdtfecha" type="timestamp">
+            <column name="DT_ADTFECHA" length="19" not-null="true" />
+        </property>
+        <property name="vrComentarioprofesor" type="string">
+            <column name="VR_COMENTARIOPROFESOR" length="512" not-null="false" />
+        </property>
+    </class>
+</hibernate-mapping>

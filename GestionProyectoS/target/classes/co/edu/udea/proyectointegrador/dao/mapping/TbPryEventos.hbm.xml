@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 15, 2014 8:40:52 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="co.edu.udea.proyectointegrador.dto.TbPryEventos" table="TB_PRY_EVENTOS" catalog="proyectos">
+        <id name="nbIdn" type="java.lang.Integer">
+            <column name="NB_IDN" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tbPryProyectos" class="co.edu.udea.proyectointegrador.dto.TbPryProyectos" fetch="select" lazy="false">
+            <column name="FK_EVENTOS_PROYECTOS_IDN" not-null="true" />
+        </many-to-one>
+        <property name="vrNombre" type="string">
+            <column name="VR_NOMBRE" length="256" not-null="true" />
+        </property>
+        <property name="vrDescripcion" type="string">
+            <column name="VR_DESCRIPCION" length="512" not-null="true" />
+        </property>
+        <property name="dtFechainicial" type="timestamp">
+            <column name="DT_FECHAINICIAL" length="19" not-null="true" />
+        </property>
+        <property name="dtFechafinal" type="timestamp">
+            <column name="DT_FECHAFINAL" length="19" not-null="true" />
+        </property>
+        <property name="dtAdtfecha" type="timestamp">
+            <column name="DT_ADTFECHA" length="19" not-null="true" />
+        </property>
+        <property name="vrAdtusuario" type="string">
+            <column name="VR_ADTUSUARIO" length="32" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

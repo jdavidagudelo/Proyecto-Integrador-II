@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 10, 2013 10:28:14 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="co.edu.udea.proyectointegrador.dto.TbAdmUsuarios" table="TB_ADM_USUARIOS" catalog="proyectos">
+        <id name="nbIdn" type="java.lang.Integer">
+            <column name="NB_IDN" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tbAdmRoles" class="co.edu.udea.proyectointegrador.dto.TbAdmRoles" fetch="select" lazy="false">
+            <column name="FK_USUARIOS_ROLES_IDN" not-null="true" />
+        </many-to-one>
+        <property name="vrUsuario" type="string">
+            <column name="VR_USUARIO" length="32" not-null="true" />
+        </property>
+        <property name="vrNombres" type="string">
+            <column name="VR_NOMBRES" length="32" not-null="true" />
+        </property>
+        <property name="vrApellidos" type="string">
+            <column name="VR_APELLIDOS" length="32" not-null="true" />
+        </property>
+        <property name="vrCorreo" type="string">
+            <column name="VR_CORREO" length="64" not-null="true" />
+        </property>
+        <property name="nbEstado" type="int">
+            <column name="NB_ESTADO" not-null="true" />
+        </property>
+        <property name="vrAdtusuario" type="string">
+            <column name="VR_ADTUSUARIO" length="32" not-null="true" />
+        </property>
+        <property name="dtAdtfecha" type="timestamp">
+            <column name="DT_ADTFECHA" length="19" not-null="true" />
+        </property>
+        <property name="vrUniversidad" type="string">
+            <column name="VR_UNIVERSIDAD" length="45" not-null="true" />
+        </property>
+        <property name="vrClave" type="string">
+            <column name="VR_CLAVE" length="512" not-null="true" />
+        </property>
+        <property name="vrCedula" type="string">
+            <column name="VR_CEDULA" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

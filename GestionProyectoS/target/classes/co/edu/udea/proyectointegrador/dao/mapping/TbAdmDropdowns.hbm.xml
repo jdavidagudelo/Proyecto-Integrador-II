@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 9, 2013 7:13:30 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="co.edu.udea.proyectointegrador.dto.TbAdmDropdowns" table="TB_ADM_DROPDOWNS" catalog="proyectos">
+        <id name="nbIdn" type="java.lang.Integer">
+            <column name="NB_IDN" />
+            <generator class="identity" />
+        </id>
+        <property name="vrAdtusuario" type="string">
+            <column name="VR_ADTUSUARIO" length="32" not-null="true" />
+        </property>
+        <property name="dtAdtfecha" type="timestamp">
+            <column name="DT_ADTFECHA" length="19" not-null="true" />
+        </property>
+        <property name="vrNombre" type="string">
+            <column name="VR_NOMBRE" length="32" not-null="true" />
+        </property>
+        <property name="vrDescripcion" type="string">
+            <column name="VR_DESCRIPCION" length="32" not-null="true" />
+        </property>
+        <property name="vrValor" type="string">
+            <column name="VR_VALOR" length="32" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 9, 2013 7:13:30 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="co.edu.udea.proyectointegrador.dto.TbNtfUsuariostipontf" table="TB_NTF_USUARIOSTIPONTF" catalog="proyectos">
+        <id name="nbIdn" type="java.lang.Integer">
+            <column name="NB_IDN" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tbNtfsTipontfsroles" class="co.edu.udea.proyectointegrador.dto.TbNtfsTipontfsroles" fetch="select" lazy="false">
+            <column name="FK_USUARIOSTIPONTF_TIPONTFSROLES_IDN" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tbAdmUsuarios" class="co.edu.udea.proyectointegrador.dto.TbAdmUsuarios" fetch="select" lazy="false">
+            <column name="FK_USUARIOSTIPONTF_USUARIOS_IDN" not-null="true" />
+        </many-to-one>
+        <property name="blNotificar" type="boolean">
+            <column name="BL_NOTIFICAR" not-null="true" />
+        </property>
+        <property name="vrAdtusuario" type="string">
+            <column name="VR_ADTUSUARIO" length="32" not-null="true" />
+        </property>
+        <property name="dtAdtfecha" type="timestamp">
+            <column name="DT_ADTFECHA" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,447 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	<bean id="Datasource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/proyectos" />
+		<property name="username" value="root" />
+		<property name="password" value="namadaju1037524435" />
+	</bean>
+	<!-- <bean id="Datasource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/proyectos" />
+		<property name="username" value="root" />
+		<property name="password" value="namadaju1037524435" />
+	</bean> -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="dataSource" ref="Datasource" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="Datasource" />
+		<property name="mappingResources">
+			<list>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbAdmConfiguraciones.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbAdmDropdowns.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbAdmMenugrupo.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbAdmMenus.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbAdmMenusxpermisos.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbAdmPermisos.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbAdmRoles.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbAdmRolesxpermisos.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbAdmUsuarios.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbNtfMediosntf.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbNtfMediostipontf.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbNtfNotificaciones.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbNtfNtfsxusuario.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbNtfsTipontfsroles.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbNtfTipontfs.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbNtfUsrtpntfmedios.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbNtfUsuariostipontf.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryActividades.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryAsesorxproyecto.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryEntregables.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryEstados.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryEstadosactividad.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryModalidades.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryObjetivosespecificos.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryParticipantexactividad.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryParticipantexproyecto.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryProyectos.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryTiposproyecto.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryPermisosxestados.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryPermisosxestadosactividad.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryRolesxpermisosestadosactividad.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryRolesxpermisosestadosproyecto.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryActividadesxactividades.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryEventos.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryEntregablexactividad.hbm.xml
+				</value>
+				<value>co/edu/udea/proyectointegrador/dao/mapping/TbPryArchivoxentregable.hbm.xml
+				</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="org.hibernate.transaction">true</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
+				</prop>
+			</props>
+		</property>
+	</bean>
+	<bean name="tbAdmUsuariosDAO" class="co.edu.udea.proyectointegrador.dao.TbAdmUsuariosDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbAdmRolesDAO" class="co.edu.udea.proyectointegrador.dao.TbAdmRolesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryModalidadesDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbPryModalidadesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryTiposProyectoDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbPryTiposProyectoDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryEstadosDAO" class="co.edu.udea.proyectointegrador.dao.TbPryEstadosDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryObjetivosespecificosDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbPryObjetivosespecificosDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryProyectosDAO" class="co.edu.udea.proyectointegrador.dao.TbPryProyectosDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryAsesorxproyectoDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbPryAsesorxproyectoDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryParticipantexproyectoDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbPryParticipantexproyectoDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryParticipantexactividadDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbPryParticipantexactividadDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbAdmRolesxpermisosDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbAdmRolesxpermisosDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbAdmPermisosDAO" class="co.edu.udea.proyectointegrador.dao.TbAdmPermisosDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryActividadesDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbPryActividadesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryActividadesxactividadesDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbPryActividadesxactividadesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryRolesxpermisosestadosproyectoDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbPryRolesxpermisosestadosproyectoDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryRolesxpermisosestadosactividadDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbPryRolesxpermisosestadosactividadDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryEstadosactividadDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbPryEstadosactividadDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryEntregablesDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbPryEntregablesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbNtfMediosntfDAO" class="co.edu.udea.proyectointegrador.dao.TbNtfMediosntfDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbNtfMediostipontfDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbNtfMediostipontfDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbNtfNotificacionesDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbNtfNotificacionesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbNtfNtfsxusuarioDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbNtfNtfsxusuarioDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbNtfsTipontfsrolesDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbNtfsTipontfsrolesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbNtfTipontfsDAO" class="co.edu.udea.proyectointegrador.dao.TbNtfTipontfsDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbNtfUsrtpntfmediosDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbNtfUsrtpntfmediosDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryEventosDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbPryEventosDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbNtfUsuariostipontfDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbNtfUsuariostipontfDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryPermisosxestadosDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbPryPermisosxestadosDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryPermisosxestadosactividadDAO"
+		class="co.edu.udea.proyectointegrador.dao.TbPryPermisosxestadosactividadDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryEntregablexactividadDAO" class="co.edu.udea.proyectointegrador.dao.TbPryEntregablexactividadDAO">
+			<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryArchivoxentregableDAO" class="co.edu.udea.proyectointegrador.dao.TbPryArchivoxentregableDAO">
+			<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="tbPryTiposProyectoService"
+		class="co.edu.udea.proyectointegrador.service.TbPryTiposProyectoService">
+		<property name="tbPryTiposProyectoDAO" ref="tbPryTiposProyectoDAO" />
+	</bean>
+	<bean name="tbPryModalidadesService"
+		class="co.edu.udea.proyectointegrador.service.TbPryModalidadesService">
+		<property name="tbPryModalidadesDAO" ref="tbPryModalidadesDAO" />
+	</bean>
+	<bean name="tbAdmUsuariosService"
+		class="co.edu.udea.proyectointegrador.service.TbAdmUsuariosService">
+		<property name="tbAdmUsuariosDAO" ref="tbAdmUsuariosDAO" />
+		<property name="tbAdmRolesService" ref="tbAdmRolesService"></property>
+		<property name="tbAdmPermisosService" ref="tbAdmPermisosService"></property>
+		<property name="tbAdmRolesxpermisosService" ref="tbAdmRolesxpermisosService"></property>
+	</bean>
+	<bean name="tbPryEstadosService"
+		class="co.edu.udea.proyectointegrador.service.TbPryEstadosService">
+		<property name="tbPryEstadosDAO" ref="tbPryEstadosDAO" />
+	</bean>
+	<bean name="tbAdmPermisosService"
+		class="co.edu.udea.proyectointegrador.service.TbAdmPermisosService">
+		<property name="tbAdmPermisosDAO" ref="tbAdmPermisosDAO" />
+	</bean>
+	<bean name="tbAdmRolesxpermisosService"
+		class="co.edu.udea.proyectointegrador.service.TbAdmRolesxpermisosService">
+		<property name="tbAdmRolesxpermisosDAO" ref="tbAdmRolesxpermisosDAO" />
+		<property name="tbAdmPermisosService" ref="tbAdmPermisosService"></property>
+		<property name="tbAdmRolesService" ref="tbAdmRolesService"></property>
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService"></property>
+	</bean>
+	<bean name="tbPryActividadesService"
+		class="co.edu.udea.proyectointegrador.service.TbPryActividadesService">
+		<property name="tbPryActividadesDAO" ref="tbPryActividadesDAO" />
+		<property name="tbPryObjetivosespecificosService" ref="tbPryObjetivosespecificosService" />
+		<property name="tbPryEstadosactividadService" ref="tbPryEstadosactividadService" />
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService" />
+		<property name="tbNtfNtfsxusuarioService" ref="tbNtfNtfsxusuarioService"></property>
+		<property name="tbPryParticipantexactividadService" ref="tbPryParticipantexactividadService"></property>
+		<property name="tbPryEntregablesService" ref="tbPryEntregablesService"></property>
+		<property name="tbPryActividadesxactividadesService" ref="tbPryActividadesxactividadesService"></property>
+		<property name="tbPryProyectosService" ref="tbPryProyectosService"></property>
+	</bean>
+	<bean name="tbPryActividadesxactividadesService"
+		class="co.edu.udea.proyectointegrador.service.TbPryActividadesxactividadesService">
+		<property name="tbPryActividadesxactividadesDAO" ref="tbPryActividadesxactividadesDAO" />
+		<property name="tbPryActividadesService" ref="tbPryActividadesService"></property>
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService" />
+
+	</bean>
+
+	<bean name="tbPryProyectosService"
+		class="co.edu.udea.proyectointegrador.service.TbPryProyectosService">
+		<property name="tbPryProyectosDAO" ref="tbPryProyectosDAO" />
+		<property name="tbPryEstadosService" ref="tbPryEstadosService" />
+		<property name="tbPryTiposProyectoService" ref="tbPryTiposProyectoService" />
+		<property name="tbPryModalidadesService" ref="tbPryModalidadesService" />
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService" />
+		<property name="tbPryActividadesService" ref="tbPryActividadesService" />
+		<property name="tbPryObjetivosespecificosService" ref="tbPryObjetivosespecificosService"></property>
+		<property name="tbPryEstadosactividadService" ref="tbPryEstadosactividadService"></property>
+		<property name="tbNtfNtfsxusuarioService" ref="tbNtfNtfsxusuarioService"></property>
+		<property name="tbAdmRolesService" ref="tbAdmRolesService"></property>
+	</bean>
+	<bean name="tbPryAsesorxproyectoService"
+		class="co.edu.udea.proyectointegrador.service.TbPryAsesorxproyectoService">
+		<property name="tbPryAsesorxproyectoDAO" ref="tbPryAsesorxproyectoDAO" />
+		<property name="tbPryProyectosService" ref="tbPryProyectosService" />
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService" />
+	</bean>
+	<bean name="tbPryParticipantexproyectoService"
+		class="co.edu.udea.proyectointegrador.service.TbPryParticipantexproyectoService">
+		<property name="tbPryParticipantexproyectoDAO" ref="tbPryParticipantexproyectoDAO" />
+		<property name="tbPryProyectosService" ref="tbPryProyectosService" />
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService" />
+	</bean>
+	<bean name="tbPryParticipantexactividadService"
+		class="co.edu.udea.proyectointegrador.service.TbPryParticipantexactividadService">
+		<property name="tbPryParticipantexactividadDAO" ref="tbPryParticipantexactividadDAO" />
+		<property name="tbPryActividadesService" ref="tbPryActividadesService" />
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService" />
+	</bean>
+	<bean name="tbPryObjetivosespecificosService"
+		class="co.edu.udea.proyectointegrador.service.TbPryObjetivosespecificosService">
+		<property name="tbPryObjetivosespecificosDAO" ref="tbPryObjetivosespecificosDAO" />
+		<property name="tbPryProyectosService" ref="tbPryProyectosService" />
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService" />
+		<property name="tbPryEstadosactividadService" ref="tbPryEstadosactividadService"></property>
+		<property name="tbPryActividadesService" ref="tbPryActividadesService"></property>
+	</bean>
+	<bean name="tbPryEntregablesService"
+		class="co.edu.udea.proyectointegrador.service.TbPryEntregablesService">
+		<property name="tbPryEntregablesDAO" ref="tbPryEntregablesDAO" />
+		<property name="tbPryActividadesService" ref="tbPryActividadesService" />
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService" />
+	</bean>
+	<bean name="tbPryEstadosactividadService"
+		class="co.edu.udea.proyectointegrador.service.TbPryEstadosactividadService">
+		<property name="tbPryEstadosactividadDAO" ref="tbPryEstadosactividadDAO" />
+	</bean>
+	<bean name="tbPryRolesxpermisosestadosactividadService"
+		class="co.edu.udea.proyectointegrador.service.TbPryRolesxpermisosestadosactividadService">
+		<property name="tbPryRolesxpermisosestadosactividadDAO" ref="tbPryRolesxpermisosestadosactividadDAO" />
+		<property name="tbAdmRolesService" ref="tbAdmRolesService"></property>
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService"></property>
+		<property name="tbPryPermisosxestadosactividadService" ref="tbPryPermisosxestadosactividadService"></property>
+		<property name="tbPryActividadesService" ref="tbPryActividadesService"></property>
+	</bean>
+	<bean name="tbPryRolesxpermisosestadosproyectoService"
+		class="co.edu.udea.proyectointegrador.service.TbPryRolesxpermisosestadosproyectoService">
+		<property name="tbPryRolesxpermisosestadosproyectoDAO" ref="tbPryRolesxpermisosestadosproyectoDAO" />
+		<property name="tbAdmRolesService" ref="tbAdmRolesService"></property>
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService"></property>
+		<property name="tbPryPermisosxestadosService" ref="tbPryPermisosxestadosService"></property>
+		<property name="tbPryProyectosService" ref="tbPryProyectosService"></property>
+	</bean>
+	<bean name="tbNtfMediosntfService"
+		class="co.edu.udea.proyectointegrador.service.TbNtfMediosntfService">
+		<property name="tbNtfMediosntfDAO" ref="tbNtfMediosntfDAO" />
+	</bean>
+	<bean name="tbNtfMediostipontfService"
+		class="co.edu.udea.proyectointegrador.service.TbNtfMediostipontfService">
+		<property name="tbNtfMediostipontfDAO" ref="tbNtfMediostipontfDAO" />
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService"></property>
+		<property name="tbNtfMediosntfService" ref="tbNtfMediosntfService"></property>
+		<property name="tbNtfTipontfsService" ref="tbNtfTipontfsService"></property>
+	</bean>
+	<bean name="tbNtfNotificacionesService"
+		class="co.edu.udea.proyectointegrador.service.TbNtfNotificacionesService">
+		<property name="tbNtfNotificacionesDAO" ref="tbNtfNotificacionesDAO" />
+		<property name="tbNtfTipontfsService" ref="tbNtfTipontfsService"></property>
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService"></property>
+	</bean>
+	<bean name="tbNtfNtfsxusuarioService"
+		class="co.edu.udea.proyectointegrador.service.TbNtfNtfsxusuarioService">
+		<property name="tbNtfNtfsxusuarioDAO" ref="tbNtfNtfsxusuarioDAO" />
+		<property name="tbPryAsesorxproyectoService" ref="tbPryAsesorxproyectoService"></property>
+		<property name="tbPryParticipantexproyectoService" ref="tbPryParticipantexproyectoService"></property>
+		<property name="tbPryProyectosService" ref="tbPryProyectosService"></property>
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService"></property>
+		<property name="tbNtfsTipontfsrolesService" ref="tbNtfsTipontfsrolesService"></property>
+		<property name="tbNtfTipontfsService" ref="tbNtfTipontfsService"></property>
+		<property name="tbNtfUsuariostipontfService" ref="tbNtfUsuariostipontfService"></property>
+		<property name="tbNtfMediosntfService" ref="tbNtfMediosntfService"></property>
+		<property name="tbNtfUsrtpntfmediosService" ref="tbNtfUsrtpntfmediosService"></property>
+		<property name="tbNtfNotificacionesService" ref="tbNtfNotificacionesService"></property>
+		<property name="tbNtfMediostipontfService" ref="tbNtfMediostipontfService"></property>
+		<property name="tbPryActividadesService" ref="tbPryActividadesService"></property>
+		<property name="tbPryEntregablesService" ref="tbPryEntregablesService"></property>
+		<property name="tbPryParticipantexactividadService" ref="tbPryParticipantexactividadService"></property>
+		<property name="tbPryArchivoxentregableService" ref="tbPryArchivoxentregableService"></property>
+	</bean>
+	<bean name="tbNtfsTipontfsrolesService"
+		class="co.edu.udea.proyectointegrador.service.TbNtfsTipontfsrolesService">
+		<property name="tbNtfsTipontfsrolesDAO" ref="tbNtfsTipontfsrolesDAO" />
+		<property name="tbAdmRolesService" ref="tbAdmRolesService"></property>
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService"></property>
+		<property name="tbNtfTipontfsService" ref="tbNtfTipontfsService"></property>
+		<property name="tbNtfUsuariostipontfService" ref="tbNtfUsuariostipontfService"></property>
+	</bean>
+	<bean name="tbNtfTipontfsService"
+		class="co.edu.udea.proyectointegrador.service.TbNtfTipontfsService">
+		<property name="tbNtfTipontfsDAO" ref="tbNtfTipontfsDAO" />
+	</bean>
+	<bean name="tbNtfUsrtpntfmediosService"
+		class="co.edu.udea.proyectointegrador.service.TbNtfUsrtpntfmediosService">
+		<property name="tbNtfUsrtpntfmediosDAO" ref="tbNtfUsrtpntfmediosDAO" />
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService"></property>
+		<property name="tbNtfMediostipontfService" ref="tbNtfMediostipontfService"></property>
+		<property name="tbNtfUsuariostipontfService" ref="tbNtfUsuariostipontfService"></property>
+	</bean>
+	<bean name="tbPryPermisosxestadosService"
+		class="co.edu.udea.proyectointegrador.service.TbPryPermisosxestadosService">
+		<property name="tbAdmPermisosService" ref="tbAdmPermisosService"></property>
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService"></property>
+		<property name="tbPryEstadosService" ref="tbPryEstadosService"></property>
+		<property name="tbPryPermisosxestadosDAO" ref="tbPryPermisosxestadosDAO"></property>
+		<property name="tbPryRolesxpermisosestadosproyectoService"
+			ref="tbPryRolesxpermisosestadosproyectoService"></property>
+	</bean>
+	<bean name="tbPryPermisosxestadosactividadService"
+		class="co.edu.udea.proyectointegrador.service.TbPryPermisosxestadosactividadService">
+		<property name="tbAdmPermisosService" ref="tbAdmPermisosService"></property>
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService"></property>
+		<property name="tbPryEstadosactividadService" ref="tbPryEstadosactividadService"></property>
+		<property name="tbPryPermisosxestadosactividadDAO" ref="tbPryPermisosxestadosactividadDAO"></property>
+		<property name="tbPryRolesxpermisosestadosactividadService"
+			ref="tbPryRolesxpermisosestadosactividadService"></property>
+	</bean>
+	<bean name="tbNtfUsuariostipontfService"
+		class="co.edu.udea.proyectointegrador.service.TbNtfUsuariostipontfService">
+		<property name="tbNtfUsuariostipontfDAO" ref="tbNtfUsuariostipontfDAO" />
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService"></property>
+		<property name="tbNtfsTipontfsrolesService" ref="tbNtfsTipontfsrolesService"></property>
+		<property name="tbNtfUsrtpntfmediosService" ref="tbNtfUsrtpntfmediosService"></property>
+	</bean>
+	<bean name="tbAdmRolesService"
+		class="co.edu.udea.proyectointegrador.service.TbAdmRolesService">
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService"></property>
+		<property name="tbAdmRolesDAO" ref="tbAdmRolesDAO"></property>
+	</bean>
+	<bean name="tbPryReportesService"
+		class="co.edu.udea.proyectointegrador.service.TbPryReportesService">
+		<property name="tbPryProyectosService" ref="tbPryProyectosService"></property>
+	</bean>
+	<bean name="tbPryEventosService" class="co.edu.udea.proyectointegrador.service.TbPryEventosService">
+		<property name="tbPryEventosDAO" ref="tbPryEventosDAO"></property>
+		<property name="tbPryProyectosService" ref="tbPryProyectosService"></property>
+	</bean>
+	<bean name="tbPryEntregablexactividadService" class="co.edu.udea.proyectointegrador.service.TbPryEntregablexactividadService">
+		<property name="tbPryActividadesService" ref="tbPryActividadesService"></property>
+		<property name="tbPryEntregablexactividadDAO" ref="tbPryEntregablexactividadDAO"></property>
+		<property name="tbPryArchivoxentregableService" ref="tbPryArchivoxentregableService"></property>
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService"></property>
+	</bean>
+	<bean name="tbPryArchivoxentregableService" class="co.edu.udea.proyectointegrador.service.TbPryArchivoxentregableService">
+		<property name="tbPryArchivoxentregableDAO" ref="tbPryArchivoxentregableDAO"></property>
+		<property name="tbPryEntregablexactividadService" ref="tbPryEntregablexactividadService"></property>
+		<property name="tbAdmUsuariosService" ref="tbAdmUsuariosService"></property>
+	</bean>
+	
+</beans>
